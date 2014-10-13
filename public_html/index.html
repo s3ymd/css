@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>cssの操作</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+        </style>
+
+    </head>
+    <body>
+        <input type="button" id="getcss" value="css「border」を取得">
+        <input type="button" id="setcss" value="css「border」を設定">
+        <input type="button" id="incrementborder" value="css「border-width」の値を1増やす">
+        <hr>
+        <div>jQuery</div>
+
+        <script type="text/javascript" src="js/libs/jquery/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#getcss").click(function () {
+                    alert($("div").css("border"));
+                });
+                $("#setcss").click(function () {
+                    $("div").css("border", "1px solid black");
+                });
+                $("#incrementborder").click(function () {
+                    $("div").css("border-width", function(index, value) {
+                        // indexは、選択された要素のインデックス（０から）、
+                        // valueは、指定されたCSS属性の値。
+                        // border-widthを取得すると「1px」などの値が返る。
+                        // 整数部分を取り出すためにはparseInt()を使う。
+                        return parseInt(value) + 1;
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
